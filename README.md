@@ -1,4 +1,4 @@
-# Fetomaternal Donation Study Recruitment Website
+# Fetomaternal Study - Blood Donations Recruitment Website
 
 Standalone Next.js + TypeScript website for recruiting mothers of children with Down syndrome for an academic blood donation research study.
 
