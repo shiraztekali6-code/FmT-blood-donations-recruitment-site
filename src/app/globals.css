@@ -45,6 +45,17 @@ html[dir="ltr"] body {
   text-align: left;
 }
 
+html[lang="he"] body,
+html[lang="he"] h1,
+html[lang="he"] h2,
+html[lang="he"] h3,
+html[lang="he"] button,
+html[lang="he"] input,
+html[lang="he"] select,
+html[lang="he"] textarea {
+  font-family: Calibri, "Segoe UI", sans-serif;
+}
+
 h1,
 h2,
 h3 {

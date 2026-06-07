@@ -11,7 +11,6 @@ export function HeroSection() {
         <div className="hero-photo" aria-hidden="true" />
         <div className="hero-overlay" aria-hidden="true" />
         <div className="container hero-content">
-          <p className="eyebrow hero-eyebrow">{t.hero.eyebrow}</p>
           <h1>{t.hero.title}</h1>
           <div className="hero-text">
             {t.hero.subtitle.map((paragraph) => (
@@ -33,7 +32,6 @@ export function HeroSection() {
       <div className="video-band">
         <div className="container video-layout">
           <div className="video-copy">
-            <p className="eyebrow">{t.video.title}</p>
             <h2>{t.video.subtitle}</h2>
           </div>
           <div className="video-frame">

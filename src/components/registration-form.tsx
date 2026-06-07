@@ -114,7 +114,6 @@ export function RegistrationForm() {
   return (
     <div id="registration" className="registration-block">
       <div className="registration-form-header">
-        <p className="eyebrow">{t.form.eyebrow}</p>
         <h3>{t.form.title}</h3>
         <p>{t.form.description}</p>
         <div className="registration-eligibility">
