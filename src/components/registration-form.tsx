@@ -118,14 +118,27 @@ export function RegistrationForm() {
         <h3>{t.form.title}</h3>
         <p>{t.form.description}</p>
         <div className="registration-eligibility">
-          <p>
-            <strong>{t.form.eligibilityTitle}</strong>
-          </p>
-          <ul>
-            {t.form.eligibility.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <div className="registration-eligibility-group">
+            <p>
+              <strong>{t.form.eligibilityTitle}</strong>
+            </p>
+            <ul>
+              {t.form.eligibility.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="registration-eligibility-group">
+            <p>
+              <strong>{t.form.involvementTitle}</strong>
+            </p>
+            <ul>
+              {t.form.involvement.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
 

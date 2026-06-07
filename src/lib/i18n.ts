@@ -111,6 +111,13 @@ export const translations = {
         "גיל 18 ומעלה",
         "נכונות לתרום דגימת דם"
       ],
+      involvementTitle: "מה כולל המחקר?",
+      involvement: [
+        "תרומת דם חד-פעמית",
+        "מילוי שאלון קצר",
+        "כ-15-30 דקות מזמנך",
+        "אפשרות ליצירת קשר עתידית לגבי מחקרים דומים"
+      ],
       fields: {
         fullName: "שם מלא",
         email: "אימייל",
@@ -276,6 +283,13 @@ export const translations = {
         "Mother of a child with Down syndrome",
         "Age 18 or older",
         "Willing to donate a blood sample"
+      ],
+      involvementTitle: "What Does Participation Involve?",
+      involvement: [
+        "One blood donation",
+        "A short questionnaire",
+        "Approximately 15-30 minutes of your time",
+        "Optional future contact regarding related studies"
       ],
       fields: {
         fullName: "Full Name",
