@@ -146,7 +146,7 @@ export const translations = {
       consentRequired: "אנא אשרי יצירת קשר כדי שצוות המחקר יוכל לפנות אלייך בנוגע למחקר.",
       genericError: "משהו השתבש בשליחת הטופס. אנא נסי שוב בעוד רגע.",
       successFallback:
-        "תודה על הרשמתך. הודעת אישור נשלחה אלייך, וצוות המחקר עשוי ליצור איתך קשר לגבי התאמה ותיאום.",
+        "תודה שפנית אלינו. קיבלנו את התעניינותך, והודעת אישור נשלחה אלייך. אם המחקר עשוי להתאים, צוות המחקר עשוי ליצור איתך קשר בהמשך עם פרטים נוספים.",
       referenceId: "מספר פנייה"
     },
     footer: {
@@ -157,7 +157,7 @@ export const translations = {
       missingConfig: "מערכת ההרשמה עדיין אינה מוגדרת במלואה. אנא פני למנהל האתר.",
       unreachable: "שירות ההרשמה אינו זמין כרגע. אנא נסי שוב בעוד כמה דקות.",
       defaultSuccess:
-        "תודה על התעניינותך. הודעת אישור נשלחה אלייך, וצוות המחקר עשוי ליצור איתך קשר לגבי התאמה ותיאום.",
+        "תודה שפנית אלינו. קיבלנו את התעניינותך, והודעת אישור נשלחה אלייך. אם המחקר עשוי להתאים, צוות המחקר עשוי ליצור איתך קשר בהמשך עם פרטים נוספים.",
       errors: {
         sheet_write_failed: "לא הצלחנו לשמור את ההרשמה במערכת המחקר.",
         sheet_unavailable: "מערכת ההרשמה אינה זמינה כרגע. אנא נסי שוב בקרוב.",
@@ -321,7 +321,7 @@ export const translations = {
       consentRequired: "Please provide consent so the research team can contact you about this study.",
       genericError: "Something went wrong while submitting your form. Please try again in a moment.",
       successFallback:
-        "Thank you for registering. A confirmation email has been sent, and the research team may contact you regarding eligibility and scheduling.",
+        "Thank you for reaching out. We have received your interest, and a confirmation email has been sent. If the study may be a good fit, our research team may contact you with more information.",
       referenceId: "Reference ID"
     },
     footer: {
@@ -334,7 +334,7 @@ export const translations = {
       unreachable:
         "The registration service is temporarily unreachable. Please try again in a few minutes.",
       defaultSuccess:
-        "Thank you for your interest. A confirmation email has been sent, and our research team may contact you regarding eligibility and scheduling.",
+        "Thank you for reaching out. We have received your interest, and a confirmation email has been sent. If the study may be a good fit, our research team may contact you with more information.",
       errors: {
         sheet_write_failed: "We could not save your registration to the study database.",
         sheet_unavailable: "Our registration system is temporarily unavailable. Please try again shortly.",
