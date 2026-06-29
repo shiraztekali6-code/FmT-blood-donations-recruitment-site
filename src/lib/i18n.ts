@@ -215,8 +215,8 @@ export const translations = {
       secondaryCta: "Why This Matters"
     },
     video: {
-      title: "A Personal Invitation from Prof. Eitan Okun",
-      subtitle: "Why this research matters, and how your participation can help advance the study.",
+      title: "",
+      subtitle: "",
       placeholderTitle: "Reserved space for a personal invitation video",
       placeholderHeading: "The invitation video will appear here",
       placeholderText:
