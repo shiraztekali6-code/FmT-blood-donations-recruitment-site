@@ -38,7 +38,11 @@ export const translations = {
     video: {
       title: "הזמנה אישית מפרופ' איתן אוקון",
       subtitle: "למה המחקר הזה חשוב, ואיך ההשתתפות שלך יכולה לסייע לקידום המחקר.",
-      placeholderTitle: "סרטון YouTube להצגה בהמשך"
+      placeholderTitle: "מקום שמור לסרטון הזמנה אישי",
+      placeholderHeading: "כאן יופיע סרטון ההזמנה",
+      placeholderText:
+        "כאשר הסרטון יהיה מוכן, הוא יוצג כאן ישירות באתר ללא מעבר ליוטיוב.",
+      unsupported: "הדפדפן שלך אינו תומך בהצגת וידאו."
     },
     research: {
       eyebrow: "למה המחקר חשוב",
@@ -212,7 +216,11 @@ export const translations = {
     video: {
       title: "A Personal Invitation from Prof. Eitan Okun",
       subtitle: "Why this research matters, and how your participation can help advance the study.",
-      placeholderTitle: "YouTube video placeholder"
+      placeholderTitle: "Reserved space for a personal invitation video",
+      placeholderHeading: "The invitation video will appear here",
+      placeholderText:
+        "When the video is ready, it will play directly on this website without sending visitors to YouTube.",
+      unsupported: "Your browser does not support embedded video."
     },
     research: {
       eyebrow: "Why This Research Matters",

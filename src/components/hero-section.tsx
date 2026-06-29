@@ -2,8 +2,11 @@
 
 import { useLanguage } from "@/components/language-provider";
 
+const INVITATION_VIDEO_SRC = "";
+
 export function HeroSection() {
   const { t } = useLanguage();
+  const hasVideo = Boolean(INVITATION_VIDEO_SRC);
 
   return (
     <section id="top" className="hero hero-photo-section">
@@ -32,15 +35,24 @@ export function HeroSection() {
       <div className="video-band">
         <div className="container video-layout">
           <div className="video-copy">
-            <h2>{t.video.subtitle}</h2>
+            <h2>{t.video.title}</h2>
+            <p>{t.video.subtitle}</p>
           </div>
-          <div className="video-frame">
-            <iframe
-              title={t.video.placeholderTitle}
-              src="https://www.youtube.com/embed/ysz5S6PUM-U?rel=0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
+          <div className="video-frame" aria-label={t.video.placeholderTitle}>
+            {hasVideo ? (
+              <video className="study-video" controls preload="metadata">
+                <source src={INVITATION_VIDEO_SRC} type="video/mp4" />
+                {t.video.unsupported}
+              </video>
+            ) : (
+              <div className="native-video-placeholder">
+                <span className="video-play-icon" aria-hidden="true" />
+                <div>
+                  <p className="video-placeholder-title">{t.video.placeholderHeading}</p>
+                  <p>{t.video.placeholderText}</p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
