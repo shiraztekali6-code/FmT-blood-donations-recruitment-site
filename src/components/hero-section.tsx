@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 
 const INVITATION_VIDEO_SRC = "/videos/prof-okun-invitation.mp4";
-const POSTER_FADE_DURATION_MS = 1600;
+const VIDEO_START_DELAY_MS = 650;
 const INVITATION_VIDEO_POSTERS = {
   en: "/videos/prof-okun-invitation-poster-en.png",
   he: "/videos/prof-okun-invitation-poster.jpg"
@@ -28,7 +28,7 @@ export function HeroSection() {
     }
   }
 
-  function startVideoAfterPosterFade() {
+  function startVideoDuringPosterFade() {
     const video = videoRef.current;
 
     if (!isVideoStartQueuedRef.current) {
@@ -57,8 +57,8 @@ export function HeroSection() {
     setIsPosterVisible(false);
     clearFadeFallbackTimeout();
     fadeFallbackTimeoutRef.current = setTimeout(
-      startVideoAfterPosterFade,
-      POSTER_FADE_DURATION_MS + 80
+      startVideoDuringPosterFade,
+      VIDEO_START_DELAY_MS
     );
   }
 
@@ -121,7 +121,7 @@ export function HeroSection() {
                   onClick={handleVideoStart}
                   onTransitionEnd={(event) => {
                     if (event.propertyName === "opacity") {
-                      startVideoAfterPosterFade();
+                      startVideoDuringPosterFade();
                     }
                   }}
                   tabIndex={isPosterVisible ? 0 : -1}
