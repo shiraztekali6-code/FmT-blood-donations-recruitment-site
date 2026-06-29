@@ -19,7 +19,6 @@ export type RegistrationPayload = {
 };
 
 export type RegistrationResult = {
-  referenceId: string;
   message: string;
   duplicate: boolean;
 };
@@ -46,7 +45,6 @@ export async function submitRegistration(
   const typedData = (typeof data === "object" && data !== null
     ? data
     : {}) as {
-    referenceId?: string;
     message?: string;
     duplicate?: boolean;
     error?: string;
@@ -62,12 +60,7 @@ export async function submitRegistration(
     );
   }
 
-  if (!typedData.referenceId) {
-    throw new Error(translations[language].form.genericError);
-  }
-
   return {
-    referenceId: typedData.referenceId,
     message:
       typedData.message ??
       translations[language].form.successFallback,

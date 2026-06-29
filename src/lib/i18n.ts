@@ -147,7 +147,6 @@ export const translations = {
       genericError: "משהו השתבש בשליחת הטופס. אנא נסי שוב בעוד רגע.",
       successFallback:
         "תודה שפנית אלינו. קיבלנו את התעניינותך, והודעת אישור נשלחה אלייך. אם המחקר עשוי להתאים, צוות המחקר עשוי ליצור איתך קשר בהמשך עם פרטים נוספים.",
-      referenceId: "מספר פנייה"
     },
     footer: {
       credit: "בתודה לאימהות ולמשפחות שמאפשרות מחקר מדעי משמעותי."
@@ -322,7 +321,6 @@ export const translations = {
       genericError: "Something went wrong while submitting your form. Please try again in a moment.",
       successFallback:
         "Thank you for reaching out. We have received your interest, and a confirmation email has been sent. If the study may be a good fit, our research team may contact you with more information.",
-      referenceId: "Reference ID"
     },
     footer: {
       credit: "With gratitude to the mothers and families who make meaningful scientific research possible."

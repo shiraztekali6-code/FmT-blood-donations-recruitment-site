@@ -8,6 +8,7 @@ const TEAM_NOTIFICATION_EMAIL = "okun.lab@gmail.com";
 const SHARED_SECRET_PROPERTY_NAME = "REGISTRATION_SHARED_SECRET";
 
 const REQUIRED_COLUMNS = [
+  "Reference ID",
   "Timestamp",
   "Full Name",
   "Email",
@@ -63,7 +64,7 @@ function doPost(e) {
     let writeResult;
 
     try {
-      writeResult = writeSubmissionToSheet_(submission, requestId);
+      writeResult = writeSubmissionToSheet_(submission, referenceId, requestId);
     } catch (error) {
       const writeError = safeErrorMessage_(error);
       Logger.log("[%s] Sheet write failed: %s", requestId, writeError);
@@ -79,7 +80,7 @@ function doPost(e) {
     if (!writeResult.duplicate) {
       try {
         sendTeamNotificationEmail_(submission, referenceId);
-        sendParticipantConfirmationEmail_(submission, referenceId);
+        sendParticipantConfirmationEmail_(submission);
       } catch (error) {
         const emailError = safeErrorMessage_(error);
         Logger.log("[%s] Email send failed: %s", requestId, emailError);
@@ -220,7 +221,7 @@ function validateSubmission_(submission) {
   return "";
 }
 
-function writeSubmissionToSheet_(submission, requestId) {
+function writeSubmissionToSheet_(submission, referenceId, requestId) {
   Logger.log(
     "[%s] SpreadsheetApp.openById('%s') - start",
     requestId,
@@ -281,7 +282,7 @@ function writeSubmissionToSheet_(submission, requestId) {
 
   Logger.log("[%s] appendRow - start", requestId);
   try {
-    appendSubmissionRow_(sheet, headerMap, submission);
+    appendSubmissionRow_(sheet, headerMap, submission, referenceId);
   } catch (error) {
     throw new Error("appendRow failed: " + safeErrorMessage_(error));
   }
@@ -327,7 +328,7 @@ function buildHeaderMap_(headers) {
   return map;
 }
 
-function appendSubmissionRow_(sheet, headerMap, submission) {
+function appendSubmissionRow_(sheet, headerMap, submission, referenceId) {
   const beforeLastRow = sheet.getLastRow();
   Logger.log("[sheet-write] lastRow before appendRow: %s", beforeLastRow);
 
@@ -339,6 +340,7 @@ function appendSubmissionRow_(sheet, headerMap, submission) {
     "yyyy-MM-dd HH:mm:ss"
   );
 
+  rowValues[headerMap["Reference ID"] - 1] = referenceId;
   rowValues[headerMap["Timestamp"] - 1] = timestampValue;
   rowValues[headerMap["Full Name"] - 1] = submission.fullName;
   rowValues[headerMap["Email"] - 1] = submission.email;
@@ -467,14 +469,12 @@ function sendTeamNotificationEmail_(submission, referenceId) {
   });
 }
 
-function sendParticipantConfirmationEmail_(submission, referenceId) {
+function sendParticipantConfirmationEmail_(submission) {
   const emailBody = [
     "Dear " + submission.fullName + ",",
     "",
     "Thank you for your interest in our research study.",
     "We have received your registration form successfully.",
-    "",
-    "Reference ID: " + referenceId,
     "",
     "Please note:",
     "- Registration does not guarantee eligibility.",

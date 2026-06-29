@@ -16,9 +16,10 @@ Flow:
 ## 2. Google Sheet Requirements
 
 Sheet URL:
-`https://docs.google.com/spreadsheets/d/1OworEWK_gNCiCkdgPisr6xeq00xYZESE4Y0h1XgTjD8/edit?gid=0#gid=0`
+`https://docs.google.com/spreadsheets/d/1x8IQ0RzC-Hrl2gvBB5zKyc6JXZkOdaqcFmCMdujatHc/edit?gid=0#gid=0`
 
 Expected columns:
+- `Reference ID`
 - `Timestamp`
 - `Full Name`
 - `Email`
@@ -52,7 +53,7 @@ In Apps Script:
 1. Open `Project Settings` -> `Script Properties` -> `Add script property`.
 2. Add:
 
-- `TARGET_SPREADSHEET_ID` = `1OworEWK_gNCiCkdgPisr6xeq00xYZESE4Y0h1XgTjD8`
+- `TARGET_SPREADSHEET_ID` = `1x8IQ0RzC-Hrl2gvBB5zKyc6JXZkOdaqcFmCMdujatHc`
 - `TARGET_SHEET_NAME` = `Registrations` (or your chosen tab name)
 - `TEAM_NOTIFICATION_EMAIL` = `okun.lab@gmail.com`
 - `REGISTRATION_SHARED_SECRET` = a long random secret string (32+ chars)

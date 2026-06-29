@@ -25,7 +25,6 @@ const initialFormState: RegistrationPayload = {
 type SubmissionState = {
   mode: "idle" | "success" | "error";
   message: string;
-  referenceId?: string;
 };
 
 export function RegistrationForm() {
@@ -92,8 +91,7 @@ export function RegistrationForm() {
       lastSuccessfulAt.current = Date.now();
       setSubmissionState({
         mode: "success",
-        message: result.message,
-        referenceId: result.referenceId
+        message: result.message
       });
       setFormData(initialFormState);
     } catch (error) {
@@ -289,9 +287,6 @@ export function RegistrationForm() {
               aria-live="polite"
             >
               {submissionState.message}
-              {submissionState.referenceId
-                ? ` ${t.form.referenceId}: ${submissionState.referenceId}`
-                : null}
             </p>
           )}
       </form>

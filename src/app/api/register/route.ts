@@ -226,7 +226,6 @@ export async function POST(request: Request) {
 
   return NextResponse.json(
     {
-      referenceId: upstreamData.referenceId ?? `FMR-${Date.now()}`,
       duplicate: Boolean(upstreamData.duplicate),
       message: translations[language].api.defaultSuccess
     },
