@@ -14,7 +14,6 @@ const INVITATION_VIDEO_POSTERS = {
 export function HeroSection() {
   const { language, t } = useLanguage();
   const fadeFallbackTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const originalVideoMutedRef = useRef(false);
   const isVideoStartQueuedRef = useRef(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPosterVisible, setIsPosterVisible] = useState(true);
@@ -29,15 +28,7 @@ export function HeroSection() {
     }
   }
 
-  function resetVideoToStart(video: HTMLVideoElement) {
-    try {
-      video.currentTime = 0;
-    } catch {
-      // Some browsers delay seeking until metadata is available.
-    }
-  }
-
-  function revealVideoAfterPosterFade() {
+  function startVideoAfterPosterFade() {
     const video = videoRef.current;
 
     if (!isVideoStartQueuedRef.current) {
@@ -52,14 +43,9 @@ export function HeroSection() {
       return;
     }
 
-    resetVideoToStart(video);
-    video.muted = originalVideoMutedRef.current;
-
-    if (video.paused) {
-      void video.play().catch(() => {
-        setIsPosterVisible(true);
-      });
-    }
+    void video.play().catch(() => {
+      setIsPosterVisible(true);
+    });
   }
 
   function handleVideoStart() {
@@ -67,30 +53,13 @@ export function HeroSection() {
       return;
     }
 
-    const video = videoRef.current;
-
-    if (!video) {
-      setIsPosterVisible(false);
-      return;
-    }
-
-    originalVideoMutedRef.current = video.muted;
     isVideoStartQueuedRef.current = true;
     setIsPosterVisible(false);
     clearFadeFallbackTimeout();
     fadeFallbackTimeoutRef.current = setTimeout(
-      revealVideoAfterPosterFade,
+      startVideoAfterPosterFade,
       POSTER_FADE_DURATION_MS + 80
     );
-
-    resetVideoToStart(video);
-    video.muted = true;
-    void video.play().catch(() => {
-      clearFadeFallbackTimeout();
-      isVideoStartQueuedRef.current = false;
-      video.muted = originalVideoMutedRef.current;
-      setIsPosterVisible(true);
-    });
   }
 
   useEffect(() => clearFadeFallbackTimeout, []);
@@ -152,7 +121,7 @@ export function HeroSection() {
                   onClick={handleVideoStart}
                   onTransitionEnd={(event) => {
                     if (event.propertyName === "opacity") {
-                      revealVideoAfterPosterFade();
+                      startVideoAfterPosterFade();
                     }
                   }}
                   tabIndex={isPosterVisible ? 0 : -1}
