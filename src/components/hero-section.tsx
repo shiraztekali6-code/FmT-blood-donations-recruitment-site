@@ -3,6 +3,7 @@
 import { useLanguage } from "@/components/language-provider";
 
 const INVITATION_VIDEO_SRC = "/videos/prof-okun-invitation.mp4";
+const INVITATION_VIDEO_POSTER = "/videos/prof-okun-invitation-poster.jpg";
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -40,7 +41,12 @@ export function HeroSection() {
           </div>
           <div className="video-frame" aria-label={t.video.placeholderTitle}>
             {hasVideo ? (
-              <video className="study-video" controls preload="metadata">
+              <video
+                className="study-video"
+                controls
+                poster={INVITATION_VIDEO_POSTER}
+                preload="metadata"
+              >
                 <source src={INVITATION_VIDEO_SRC} type="video/mp4" />
                 {t.video.unsupported}
               </video>
