@@ -35,13 +35,23 @@ function getUrlLanguage(): Language | null {
   return isLanguage(language) ? language : null;
 }
 
+function getPathLanguage(): Language | null {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  return window.location.pathname === "/yiddish" ? "yi" : null;
+}
+
 function storeUrlLanguage(language: Language) {
   if (typeof window === "undefined") {
     return;
   }
 
   const url = new URL(window.location.href);
-  if (language === DEFAULT_LANGUAGE) {
+  if (language === DEFAULT_LANGUAGE && url.pathname !== "/yiddish") {
+    url.searchParams.delete("lang");
+  } else if (language === "yi" && url.pathname === "/yiddish") {
     url.searchParams.delete("lang");
   } else {
     url.searchParams.set("lang", language);
@@ -54,7 +64,7 @@ function getWindowNameLanguage(): Language | null {
     return null;
   }
 
-  const match = window.name.match(/(?:^|;)site-language=(he|en)(?:;|$)/);
+  const match = window.name.match(/(?:^|;)site-language=(he|en|yi)(?:;|$)/);
   return isLanguage(match?.[1]) ? match[1] : null;
 }
 
@@ -124,6 +134,7 @@ function getStoredLanguage(): Language {
 
   return (
     getUrlLanguage() ??
+    getPathLanguage() ??
     getLocalStorageLanguage() ??
     getCookieLanguage() ??
     getWindowNameLanguage() ??
@@ -140,7 +151,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setHasLoadedPreferredLanguage(true);
   }, []);
 
-  const direction = language === "he" ? "rtl" : "ltr";
+  const direction = language === "en" ? "ltr" : "rtl";
   const t = translations[language];
 
   useEffect(() => {

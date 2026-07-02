@@ -40,9 +40,11 @@ function mapUpstreamError(
       ? messages[code as keyof typeof messages]
       : messages.default;
   const detailSuffix = detail
-    ? language === "he"
-      ? ` פרטים: ${detail}`
-      : ` Details: ${detail}`
+    ? language === "en"
+      ? ` Details: ${detail}`
+      : language === "yi"
+        ? ` פּרטים: ${detail}`
+        : ` פרטים: ${detail}`
     : "";
 
   return `${baseMessage}${detailSuffix}`;

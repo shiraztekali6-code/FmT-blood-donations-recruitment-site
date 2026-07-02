@@ -3,6 +3,12 @@
 import { useLanguage } from "@/components/language-provider";
 import type { Language } from "@/lib/i18n";
 
+const languageOptions: Array<{ label: string; value: Language }> = [
+  { label: "עברית", value: "he" },
+  { label: "English", value: "en" },
+  { label: "ייִדיש", value: "yi" }
+];
+
 const navItems = [
   { key: "study", href: "#top" },
   { key: "why", href: "#why-this-research-matters" },
@@ -38,23 +44,19 @@ export function SiteHeader() {
             ))}
           </ul>
           <div className="language-switcher" aria-label={t.nav.languageLabel}>
-            <button
-              type="button"
-              className={language === "he" ? "active" : ""}
-              onClick={() => onLanguageChange("he")}
-              aria-pressed={language === "he"}
-            >
-              עברית
-            </button>
-            <span aria-hidden="true">|</span>
-            <button
-              type="button"
-              className={language === "en" ? "active" : ""}
-              onClick={() => onLanguageChange("en")}
-              aria-pressed={language === "en"}
-            >
-              English
-            </button>
+            {languageOptions.map((option, index) => (
+              <span className="language-option" key={option.value}>
+                {index > 0 ? <span aria-hidden="true">|</span> : null}
+                <button
+                  type="button"
+                  className={language === option.value ? "active" : ""}
+                  onClick={() => onLanguageChange(option.value)}
+                  aria-pressed={language === option.value}
+                >
+                  {option.label}
+                </button>
+              </span>
+            ))}
           </div>
         </nav>
       </div>

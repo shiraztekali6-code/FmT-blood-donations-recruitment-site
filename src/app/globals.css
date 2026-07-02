@@ -52,7 +52,15 @@ html[lang="he"] h3,
 html[lang="he"] button,
 html[lang="he"] input,
 html[lang="he"] select,
-html[lang="he"] textarea {
+html[lang="he"] textarea,
+html[lang="yi"] body,
+html[lang="yi"] h1,
+html[lang="yi"] h2,
+html[lang="yi"] h3,
+html[lang="yi"] button,
+html[lang="yi"] input,
+html[lang="yi"] select,
+html[lang="yi"] textarea {
   font-family: Calibri, "Segoe UI", sans-serif;
 }
 
@@ -242,6 +250,12 @@ a {
   padding: 0.25rem 0.35rem;
   cursor: pointer;
   transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.language-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .language-switcher button:hover,
