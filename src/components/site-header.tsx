@@ -6,7 +6,8 @@ import type { Language } from "@/lib/i18n";
 const languageOptions: Array<{ label: string; value: Language }> = [
   { label: "עברית", value: "he" },
   { label: "English", value: "en" },
-  { label: "ייִדיש", value: "yi" }
+  { label: "ייִדיש", value: "yi" },
+  { label: "አማርኛ", value: "am" }
 ];
 
 const navItems = [

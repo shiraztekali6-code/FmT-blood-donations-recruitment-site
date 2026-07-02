@@ -40,7 +40,15 @@ function getPathLanguage(): Language | null {
     return null;
   }
 
-  return window.location.pathname === "/yiddish" ? "yi" : null;
+  if (window.location.pathname === "/yiddish") {
+    return "yi";
+  }
+
+  if (window.location.pathname === "/amharic") {
+    return "am";
+  }
+
+  return null;
 }
 
 function storeUrlLanguage(language: Language) {
@@ -49,9 +57,14 @@ function storeUrlLanguage(language: Language) {
   }
 
   const url = new URL(window.location.href);
-  if (language === DEFAULT_LANGUAGE && url.pathname !== "/yiddish") {
+  const isDedicatedLanguagePath =
+    url.pathname === "/yiddish" || url.pathname === "/amharic";
+
+  if (language === DEFAULT_LANGUAGE && !isDedicatedLanguagePath) {
     url.searchParams.delete("lang");
   } else if (language === "yi" && url.pathname === "/yiddish") {
+    url.searchParams.delete("lang");
+  } else if (language === "am" && url.pathname === "/amharic") {
     url.searchParams.delete("lang");
   } else {
     url.searchParams.set("lang", language);
@@ -64,7 +77,7 @@ function getWindowNameLanguage(): Language | null {
     return null;
   }
 
-  const match = window.name.match(/(?:^|;)site-language=(he|en|yi)(?:;|$)/);
+  const match = window.name.match(/(?:^|;)site-language=(he|en|yi|am)(?:;|$)/);
   return isLanguage(match?.[1]) ? match[1] : null;
 }
 
@@ -151,7 +164,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setHasLoadedPreferredLanguage(true);
   }, []);
 
-  const direction = language === "en" ? "ltr" : "rtl";
+  const direction = language === "he" || language === "yi" ? "rtl" : "ltr";
   const t = translations[language];
 
   useEffect(() => {

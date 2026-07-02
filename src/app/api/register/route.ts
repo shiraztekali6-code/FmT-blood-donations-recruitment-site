@@ -44,7 +44,9 @@ function mapUpstreamError(
       ? ` Details: ${detail}`
       : language === "yi"
         ? ` פּרטים: ${detail}`
-        : ` פרטים: ${detail}`
+        : language === "am"
+          ? ` ዝርዝሮች: ${detail}`
+          : ` פרטים: ${detail}`
     : "";
 
   return `${baseMessage}${detailSuffix}`;

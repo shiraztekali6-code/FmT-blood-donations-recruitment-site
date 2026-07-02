@@ -7,6 +7,7 @@ import { useLanguage } from "@/components/language-provider";
 const INVITATION_VIDEO_SRC = "/videos/prof-okun-invitation.mp4";
 const VIDEO_START_DELAY_MS = 650;
 const INVITATION_VIDEO_POSTERS = {
+  am: "/videos/prof-okun-invitation-poster-en.png",
   en: "/videos/prof-okun-invitation-poster-en.png",
   he: "/videos/prof-okun-invitation-poster.jpg",
   yi: "/videos/prof-okun-invitation-poster.jpg"
